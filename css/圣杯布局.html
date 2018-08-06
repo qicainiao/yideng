@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+     header, footer{
+       height: 30px;
+       background-color: #ff0000;
+     }
+
+     article{
+       height: 500px;
+       padding: 0 300px 0 200px;
+       background: #ccc;
+     }
+
+     .left,.middle, .right{
+        position: relative;
+        min-height: 130px;
+        float: left;
+     }
+
+    .left{
+       left: -200px;
+       margin-left: -100%;
+       background: green;
+       width: 200px;
+    }
+
+
+     .right{
+       right: -300px;
+       margin-left: -300px;
+       background: red;
+       width: 300px;
+     }
+
+     .middle{
+       background: blue;
+       width: 100%;
+     }
+
+     .left1,.middle1, .right1{
+        float: left;
+     }
+
+
+      .container{
+        padding: 0 300px;
+      }
+
+     .middle1{
+       width: 100%;
+       position: relative;
+     }
+
+     .left1{
+       width: 100px;
+       background-color: pink;
+       position: relative;
+       left:-100px;
+       margin-left: -100%;
+     }
+     .right1{
+       width: 100px;
+       position: relative;
+       background-color: pink;
+       right: -100px;
+       margin-right: -100px;
+     }
+  </style>
+</head>
+<body>
+   <header>头部</header>
+   <article>
+     <div class="middle">
+       我是中间
+     </div>
+     <div class="left">
+       我是左边
+     </div>
+     <div class="right">
+       我是右边
+     </div>
+   </article>
+
+   <div class="container">
+     <div class="middle1">
+       我是中间
+     </div>
+     <div class="left1">
+       我是左边
+     </div>
+     <div class="right1">
+       我是右边
+     </div>
+   </div>
+   <!-- <footer>底部</footer> -->
+</body>
+</html>
