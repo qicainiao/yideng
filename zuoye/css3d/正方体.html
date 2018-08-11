@@ -62,13 +62,11 @@
     }
 
     @keyframes myanimation{
-         0%{
-             transform: rotate3d(80,80,80,0);
-         }
-         100%{
-             transform: rotate3d(80,80,80,360deg);
-         }
-        
+      16% { -webkit-transform: rotateY(-90deg);}
+      33% { -webkit-transform: rotateY(-90deg) rotateZ(135deg);}
+      50% { -webkit-transform: rotateY(225deg) rotateZ(135deg);}
+      66% { -webkit-transform: rotateY(135deg) rotateX(135deg);}
+      83% { -webkit-transform: rotateX(135deg);}
      }
 
   </style>
