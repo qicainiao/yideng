@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+     div{
+       width: 300px;
+       height: 100px;
+       background: orange;
+       border-radius: 10px;
+       box-shadow: 10px 5px 10px #888;
+       position: relative;
+     }
+
+     div::after{
+       content: "";
+       position: relative;
+       box-shadow: 10px 20px 6px red;
+       width: 26px;
+       height: 26px;
+     }
+  </style>
+</head>
+<body>
+   <div></div>
+</body>
+</html>
