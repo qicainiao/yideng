@@ -27,7 +27,8 @@
          }
 
          //存储对象一般我们会将JSON存入localStorage中，
-         //但是在localStorage会自动将localStorage转换成为字符串形式
+         //但是在localStorage会自动将localStorage转换成为字符串形式,限制5M
+         //作用：离线资源的存储
          var data ={
            name:'lizhijuan',
            sex:'woman',
@@ -37,7 +38,6 @@
          storage.setItem("data",JSON.stringify(data));
          console.log(storage.getItem("data"));
          console.log(JSON.parse(storage.getItem("data")));
-
        }
      }
   </script>
