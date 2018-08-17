@@ -17,14 +17,33 @@ function setCookie(cname,cvalue,exdays){
 	//如果设置别的域名 cookie设置无效，设置不了
 }
 function getCookie(cname){
-	var name = cname + "=";
-	var ca = document.cookie.split(';');
-	for(var i=0; i<ca.length; i++) {
-		var c = ca[i].trim();
-		if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+	//方法一
+	// var name = cname + "=";
+	// var ca = document.cookie.split(';');
+	// for(var i=0; i<ca.length; i++) {
+	// 	var c = ca[i].trim();
+	// 	if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+	// }
+	// return "";
+
+	//方法二
+	var arr,reg = new RegExp("(^|)"+cname+"=([^;]*)(;|$)")
+	if (arr = document.cookie.match(reg)) {
+		 return unescape(arr[2]);
+	}else {
+		return null;
 	}
-	return "";
 }
+
+function delCookie(name){
+	var exp = new Date();
+	exp.setTime(exp.getTime()-1);
+	var cval = getCookie(name);
+	if (cval) {
+		document.cookie = name+"="+cval+";expires="+exp.toGMTString();
+	}
+}
+
 function checkCookie(){
 	var user=getCookie("username");
 	if (user!=""){

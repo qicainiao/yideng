@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript">
+      //es5 谁掉指向
+      function test(){
+        console.log("000000=>",this.m)  //undefined 而不是not defined 这里是window掉。相当于window.m
+        //alert(m) //这样报错 not defined
+      }
+      test();
+
+      this.m = 1000;
+      var obj ={
+        m:100,
+        test: function(){
+          console.log("111111=>",this.m)
+        }
+      }
+
+      obj.test(); //100  因为是obj调用的 this指向obj
+      //如果这么修改
+      var p =  obj.test;
+      p();//结果是1000
+
+      //例子
+      var th = {
+        a:1,
+        b:this.a
+      }
+      console.log(th.b);//结果 undefined
+
+      //闭包
+      this.h = 1000;
+      var obj2 ={
+        h:100,
+        test: function(){
+          console.log("33333",this.h)
+          return function(){
+            console.log("闭包",this.h);
+          }
+        }
+      }
+      var o= obj2.test();  //体会这里加() 与不加（）的区别
+      console.log(o);
+      o();
+
+
+       //例子
+       var style={
+         color:'green'
+       }
+
+      function myclick(){
+        console.log("lllll",this.style.color);
+      }
+      function load(){
+        document.getElementById('btn').onclick=myclick;//结果 red。this执行当前dom
+        //如果单独调用 myclick 结果 green,this执行window
+      }
+
+      //例子
+      var length = 10;
+      function fn(){
+        console.log("结果",this.length);
+      }
+      // fn(); //结果10
+      var yideng={
+        length:5,
+        method: function(fn){
+          fn();
+          console.log( " arguments[0]==>",arguments);
+          arguments[0]();
+        }
+      }
+      yideng.method(fn,1);
+
+  </script>
+</head>
+<body onload="load()">
+ <input type="button" id="btn" value="test" style="color:red"></input>
+</body>
+</html>

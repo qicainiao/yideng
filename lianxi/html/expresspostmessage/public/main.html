@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>跨域数据访问,主页面与iframe跑在不同域</title>
+  <script type="text/javascript">
+         window.addEventListener('message',function(e){
+           console.log("e--->",e);
+           const data = e.data;
+           console.log("main--->", document.getElementById('main'));
+           document.getElementById('main').style.backgroundColor=e.data;
+         },false)// element.addEventListener(event,fn,useCaption ); 三个参数
+         //event 事件 比如 click mouseenter mouseleave
+         // fn 回调函数
+         //useCaption 用于描述是冒泡还是捕获。默认值是false，即冒泡传递。
+         //当值为true，就是捕获传递。
+
+
+  </script>
+</head>
+<body>
+  <div id="main1" style="width:200px;height:200px;margin:100px;border:solid 1px #000;">
+     我是主界面1,准备接收iframe的传值。
+  </div>
+  <div id="main2" style="width:200px;height:200px;margin:100px;border:solid 1px #000;">
+     我是主界面2,向iframe的传递值。
+  </div>
+  <div>
+     iframe
+     <iframe src="http://localhost:3000/" width="800px" height="800px"></iframe>
+  </div>
+</body>
+</html>

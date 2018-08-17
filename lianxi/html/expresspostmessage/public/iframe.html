@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+    <style type="text/css">
+           html,body{
+               height:100%;
+               margin:0px;
+           }
+    </style>
+</head>
+  <body style="height:100%;">
+        <div id="frame" style="height:200px; width:200px;background-color:rgb(204, 204, 0)" onclick="changeColor()">
+           点击改变颜色
+        </div>
+<!--
+        解析：
+         postMessages
+          HTML5提供了新型机制PostMessage实现安全的跨源通信.
+
+          语法
+          otherWindow.postMessage(message, targetOrigin, [transfer]);
+          1
+          otherWindow: 其他窗口的一个引用, 比如IFRAME的contentWindow属性, 执行, window.open返回的窗口对象.
+          message: 将要发送到其他窗口的数据.
+          targetOrigin: 通过窗口的origin属性来指定哪些窗口能接收到消息事件, 其值可以是字符”*”(表示无限制)或者一个URL
+          transfer: 是一串和message同时传递的Transferable对象. 这些对象的所有权将被转移给消息的接收方, 而发送一放将不再保有所有权. -->
+
+        <script type="text/javascript">
+
+             function changeColor(){
+               var frame = document.getElementById('frame');
+               var color=frame.style.backgroundColor;
+               if(color=='rgb(204, 102, 0)'){
+                   color='rgb(204, 204, 0)';
+               }else{
+                   color='rgb(204,102,0)';
+               }
+                console.log("frame===>",frame);
+                console.log("color",color);
+               frame.style.backgroundColor=color;
+               window.parent.postMessage(color,'*');
+             }
+
+             // window.addEventListener('message',function(e){
+             //   console.log("frame接收到message",e);
+             //   if (e.source != window.parent) {
+             //     return
+             //   }
+             //
+             // }, false);
+
+
+        </script>
+       <!-- <script type="text/javascript">
+           var container=document.getElementById('container');
+
+           // window.addEventListener('message',function(e){
+           //     if(e.source!=window.parent) return;
+           //     var color=container.style.backgroundColor;
+           //     window.parent.postMessage(color,'*');
+           // },false);
+
+           function changeColor () {
+               var color=container.style.backgroundColor;
+               if(color=='rgb(204, 102, 0)'){
+                   color='rgb(204, 204, 0)';
+               }else{
+                   color='rgb(204,102,0)';
+               }
+               container.style.backgroundColor=color;
+               window.parent.postMessage(color,'*');
+           }
+       </script> -->
+  </body>
+</html>
