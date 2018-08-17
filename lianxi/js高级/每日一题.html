@@ -13,15 +13,106 @@
        //   return item>1;
        // })
        // console.log(result);
-       var yideng = {
-         n:1
-       };
-       var yideng1={};
-       yideng1.x = yideng = {
-         n:2
-       };
-       console.log(yideng1.x);
+       //
+       //
+       // var yideng = {
+       //   n:1
+       // };
+       // var yideng1={};
+       // yideng1.x = yideng = {
+       //   n:2
+       // };
+       // console.log(yideng1.x);
+       //
+       //
+       // var obj ={
+       //   user:'zhengzheng.xz',
+       //   getName: function(){
+       //     return this.user
+       //   }
+       // }
+       // var getNameFn = obj.getName;
+       // console.log(getNameFn());
+       // console.log(obj.getName());
+       //
+       // var global = 1;
+       // function doSomething(){
+       //   var inner = 2;
+       //   globalA = 3;
+       // }
+       // doSomething();
+       // console.log(global);
+       // console.log(globalA);
+       // console.log(inner);
+
+
+       // var x= 1;
+       // function foo(){
+       //   var y=1+x;
+       //   return function(){
+       //     z= 1+y;
+       //     return z;
+       //   }
+       // }
+       // foo()();
+
+       // function ff(){
+       //
+       // }
+       //
+       // console.log(typeof ff.prototype);
+
+       // function make(num){
+       //    return function(){
+       //      return num;
+       //    }
+       // }
+       // var makeArr = [make(0),make(1),make(2)];
+       // console.log(makeArr[0]());
+       // console.log(makeArr[1]());
+       // console.log(makeArr[2]());  // 0 1 2
+
+      //  var name="global";
+      //  function A(name){
+      //    alert(name); //3
+      //    this.name = name;
+      //    var name = '1';
+      //    console.log(this.name); // 3
+      //    console.log(name);  //1
+      //  }
+      // A.prototype.name = '2';
+      //  var a = new A('3');
+      //  console.log(a.name); //3
+      //  delete a.name;
+      //  console.log(a.name); //2
+
+      window.onload = function(){
+        var ul = document.getElementById("ul");
+        for (var i = 0; i < ul.childElementCount; i++) {
+          ul.children[i].onclick = (function(index){
+            console.log("onclick",index); //立即执行函数。没点击之前这行已经执行
+            return function(){
+                console.log(index);
+            }
+          })(i)
+        }
+      }
+
 
   </script>
+  <div>
+    <ul id="ul">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+    </ul>
+  </div>
 </body>
 </html>
