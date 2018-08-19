@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>javascript容错处理</title>
+  <script type="text/javascript">
+     // var a=;
+     // alert(1); //上一句错误，后面的不会再执行
+     function a(){
+       try {
+         console.log(1);
+         throw new Error('抛出异常');
+          return true;
+       } catch (e) {
+         console.warn("异常处理",e);
+         console.log(2);
+         return true;
+       } finally {
+         console.log(3);
+       }
+     }
+     console.log(a());
+
+     //try catch 里面return了finally也会执行完成
+
+     // 运行test() 和new test()的结果分别是什么？
+     // var a=5;
+     // function test(){
+     //   a=0;
+     //   console.log(a);
+     //   console.log(this.a);
+     //   var a;
+     //   console.log(a);
+     // }
+     // var a = test();
+     // a();  //this指向问题
+
+     //改为可以输出0-9的形式
+     function bb(){
+       var arr = [];
+       for (var i = 0; i <10; i++) {
+         arr[i] = (function(index){
+           // document.write(i);
+           console.log(index);
+         })(i)
+
+       }
+       return arr;
+     }
+
+     var arr1= bb();
+
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

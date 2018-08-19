@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript">
+     var str = "asd;lfglgglgl";
+     // function bytesLength(){
+     //   var len = str.length();
+     //   for (var i = 0; i < str.length; i++) {
+     //    if (str.charCodeAt(i)>255) {
+     //      len++
+     //    }
+     //   }
+     //   return len;
+     // }
+
+     // Person.protoType.name ="hehe"
+     // function Person(){
+     //
+     // }
+     // var person = new Person();
+     // var person1 = new Person();
+
+     // function Car(color,owner){
+     //   this.color = color;
+     //   this.owner = owner; //选配的这么写可以
+     //   this.weight=9000;
+     //   this.lang=300; //流程化的每次new的时候都执行一次，代码冗余
+     // }
+     // var car1 = new Car('red','lizhi2');
+     // var car2 = new Car('black','lizhi2');
+
+     //改造之后
+     // Car.prototype.weight=9000;
+     // Car.prototype.lang=300;
+     // function Car(color,owner){
+     //   this.color = color;
+     //   this.owner = owner; //选配的这么写可以
+     // }
+     // var car1 = new Car('red','lizhi2');
+     // var car2 = new Car('black','lizhi2');
+
+     //再改造之后
+     // Car.prototype={
+     //   weight:9000;
+     //   lang:300
+     // }
+     // function Car(color,owner){
+     //   this.color = color;
+     //   this.owner = owner; //选配的这么写可以
+     // }
+     // var car1 = new Car('red','lizhi2');
+     // var car2 = new Car('black','lizhi2');
+
+
+     // Person.prototype.lastName ='Deng'
+     // function Person(name){
+     //   this.name = name;
+     // }
+     //
+     // var person = new Person('li')
+     // person.lastName = 'jack'  //new出来是实例改不了原型的属性
+     // delete person.lastName
+     // console.log(person.lastName);//
+    //  function Person(){
+    //
+    //  }
+    //  Car.prototype={
+    //    constructor:Person    //改变Car的父亲,这时候生成的实例car的constructor也指向Person
+    //  }
+    //  Car.prototype.name="999"
+    //  function Car() {
+    //
+    //  }
+    //  var car = new Car();
+    //  // Car.prototype={
+    // //   constructor:Person  如果先生成了实例car 再改变Car的constructor的话,car的constructor还是指向Car 因为Car.prototype重新指向一个空间了
+    // // }
+
+
+    //系统隐式的命名规则__两个下划线
+    //car.__proto__
+    //开发中自己想声明私有的 js没有私有变量，一般这么写告诉别人私有 _private
+   //
+   //  function Person(){
+   //
+   //    var name="li";
+   //    this.name="zhijuan";
+   //    console.log(name);
+   //  }
+   //
+   // var person = new Person();
+   // Person.prototype.name="sunny"
+   // function Person(){
+   //   // var this={
+   //   //      __proto__:Person.prototype
+   //   //  }  隐式的
+   // }
+   // Person.prototype={
+   //   constructor:Car
+   // }
+   // var person = new Person();
+   // Person.prototype.name="charry"
+   // Person.prototype={
+   //    name:"charry"
+   //  }
+   // function Car() {
+   //
+   //  }
+   //
+   // console.log(person);
+
+    // Person.prototype = {
+    //   name:'a',
+    //   sayName: function(){
+    //     console.log(this.name);
+    //   }
+    // }
+    //
+    // function Person(){
+    //    this.name='b'
+    // }
+    //  var person = new Person();
+    //  person.name //b
+    //  person.sayName() //b   this指向
+
+    // call apply改变this指向
+    // function Person(name,age) {
+    //   this.name= name;
+    //   this.age = age;
+    // }
+    // // var person = new Person('deng',100);
+    // var obj ={
+    //
+    // }
+    // Person.call(obj,"cheng",440);
+
+    function Person(name,age,sex){
+      this.name =name;
+      this.age =age;
+      this.sex = sex;
+    }
+    function Student(name,age,sex,tel,grade){
+      // Person.call(this,name,age,sex)//call 借用别人的函数实现自己功能
+      Person.apply(this,[name,age,sex]);
+      this.tel = tel;
+      this.grade = grade;
+    }
+
+    var student = new Student('li',90,'nv',171899,3);
+    //call 参数一个个传进去
+    //
+    // var people={
+    //   name:[1,2,3],
+    //   find:function(){
+    //     return this.name
+    //   }
+    // }
+    //
+    // people.find();
+
+    var fn = function(){}
+    fn = fn.prototype.constructor
+
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

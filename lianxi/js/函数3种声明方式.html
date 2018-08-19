@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript">
+     //二 匿名的函数赋值给变量
+     var test = function(a){
+       console.log(a);
+     }
+     test();
+
+     //如果给函数加上名字
+
+     var test = function bb(a){
+       console.log(bb); //bb 只在函数内部有效
+     }
+     test();
+     console.log(bb);  //报错 bb is not defined
+
+     //function 构造函数
+     var add = new Function(
+       'x',
+       'y',
+       'return x+y'
+     )
+     console.log(add(1,2));
+     
+  </script>
+</head>
+<body>
+
+</body>
+</html>

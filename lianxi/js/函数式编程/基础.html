@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript">
+     //纯函数
+    // 纯函数的定义是，对于相同的输入，永远会得到相同的输出，而且没有任何可观察的副作用，也不依赖外部环境的状态。
+
+    var arr = [1,2,3,4,5];
+    // Array.slice是纯函数，因为它没有副作用，对于固定的输入，输出总是固定的
+   // 可以，这很函数式
+    xs.slice(0,3);
+    //=> [1,2,3]
+    xs.slice(0,3);
+    //=> [1,2,3]
+
+    //arrayObject.slice(start,end)
+    //返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。
+    //请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。
+
+    // Array.splice是不纯的，它有副作用，对于固定的输入，输出不是固定的
+    // 这不函数式
+    xs.splice(0,3);
+    //=> [1,2,3]
+    xs.splice(0,3);
+    //=> [4,5]
+    xs.splice(0,3);
+    //=> []
+    
+  </script>
+</head>
+<body>
+
+</body>
+</html>

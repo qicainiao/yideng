@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js" charset="utf-8"></script>
+
+</head>
+<body>
+    详细解读防止云笔记了
+    <ul>
+     <li>list item 1</li>
+     <li>list item 2</li>
+     <li>list item 3</li>
+    </ul>
+    <p>a paragraph</p>
+    <script type="text/javascript">
+       console.log($.trim(' 999  000 sadasd  4534  '));
+       $('li').add('p').css('background-color', 'red');
+       $('ul').append('<li>new list item</li>')
+
+       //get到的点
+       var  class2type = {},toString = class2type.toString,;
+       $.each("Boolean Number String Function Array Date RegExp Object Error".split(" "), function(i, name) {
+         class2type[ "[object " + name + "]" ] = name.toLowerCase()
+       })
+
+       function type(obj) {
+         return obj == null ? String(obj) :
+           class2type[toString.call(obj)] || "object"
+       }
+
+         function isFunction(value) { return type(value) == "function" }
+         function isWindow(obj)     { return obj != null && obj == obj.window }
+         function isDocument(obj)   { return obj != null && obj.nodeType == obj.DOCUMENT_NODE }
+         function isObject(obj)     { return type(obj) == "object" }
+
+          //get到的点
+          var emptyArray = [];
+          //空数组的妙用  [] 等于new Array*()  。如果下面每个emptyArray 都换成[],就相当于 new了n次，性能不好
+          forEach: emptyArray.forEach,
+          reduce: emptyArray.reduce,
+          push: emptyArray.push,
+          sort: emptyArray.sort,
+          indexOf: emptyArray.indexOf,
+          concat: emptyArray.concat,
+
+          //
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  //判断数据类型
+  //1 偏函数
+  function isType(type){
+    return function(data){
+      return Object.prototype.toString.call(data)==`[object ${type}]`
+    }
+  }
+
+  var isArray = isType('Array');
+  var isNumber = isType('Number')
+  isArray([1,2])
+  isNumber(5)
+
+  //方法二
+  var class2type = {};
+  jQuery.each(("Boolean Number String Function Array Date RegExp Object Error Symbol").split(" "),function(index, name){
+      class2type["[object "+name+"]"] = name;
+  });
+  function getType(obj){
+    return class2type[Object.prototype.toString.call(obj)];
+  }
+  console.log(getType(2));
+
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
