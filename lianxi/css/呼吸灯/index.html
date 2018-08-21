@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+      *{
+         margin: 0px;
+         padding: 0px;
+        }
+     body{
+        background-color: #2B2B2B;
+     }
+     ul,li,img{
+       margin: 0;
+       padding: 0;
+     }
+     ul{
+       margin-top: 100px;
+       list-style: none;
+       width: 100%
+     }
+
+     li{
+       display: inline-block;
+       width: 24.5%;
+       text-align: center;
+     }
+
+     img{
+       width: 80%;
+       height: auto;
+       overflow: hidden;
+       transition: 1s;
+        border: 10px solid #fff;
+     }
+
+     img:hover{
+       transform: scale(1.2) ;
+       border-radius: 50%;
+       box-shadow: 0 0 10px rgb(0,0,0,.8);
+     }
+
+     body {
+               background: #333;
+               color: #fff;
+               font-family: 'Archivo Black', sans-serif;
+               font-size: 3em;
+               margin-top: 1em;
+               text-align: center;
+               text-transform: uppercase;
+           }
+
+           .heart {
+               background-color: red;
+               display: inline-block;
+               height: 30px;
+               margin: 0 10px;
+               position: relative;
+               top: 0;
+              
+               width: 30px;
+           }
+
+           .heart:before,
+           .heart:after {
+               content: "";
+               background-color: blue;
+               border-radius: 50%;
+               height: 30px;
+               position: absolute;
+               width: 30px;
+           }
+
+           .heart:before {
+               top: -15px;
+               left: 0;
+           }
+
+           .heart:after {
+               left: 15px;
+               top: 0;
+           }
+  </style>
+</head>
+<body>
+    <h1>呼吸灯的效果</h1>
+    <ul>
+      <li>
+        <img src="images/1.jpg" alt="">
+      </li>
+      <li>
+          <img src="images/2.jpg" alt="">
+      </li>
+      <li>
+          <img src="images/3.jpg" alt="">
+      </li>
+      <li>
+          <img src="images/4.jpg" alt="">
+      </li>
+    </ul>
+
+    I <span class="heart"></span> you.
+</body>
+</html>
