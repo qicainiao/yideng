@@ -5,8 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <script type="text/javascript">
+    for (let i = (setTimeout(()=> console.log("a->",i),0));
+      setTimeout(()=> console.log("b->",i)), i<2;  i++) {
+        console.log(i++);
+    }
+  </script>
+  <style media="screen">
+     .love{
+       display: inline-block;
+       width: 60px;
+       height: 60px;
+
+       background-color: red;
+       position: relative;
+       transform: rotate(-45deg);
+     }
+
+     .love::before, .love::after{
+       content: '';
+       position: absolute;
+       display: inline-block;
+       width: 60px;
+       height: 60px;
+       background-color: red;
+       border-radius: 50%;
+     }
+      .love::before{
+        top: -30px;
+      }
+     .love::after{
+       left: 30px;
+     }
+  </style>
 </head>
 <body>
+    <div> 
+      I <span class="love"></span> You
+    </div>
 
 </body>
 </html>
