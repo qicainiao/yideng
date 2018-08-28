@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="node_modules/systemjs/dist/system.js" charset="utf-8"></script>
+</head>
+<body>
+  <div style="margin:200px">
+    <img src="./images/default_zan.png" alt="" width="40" height="40" id="zan">
+    <p style="font-size:12px;color:#999;margin:0;padding:0 10px;"></p>
+  </div>
+  <script type="text/javascript">
+    SystemJS.config({
+      baseURL: '/es5'
+    });
+    SystemJS.import('./es5/Thumb.js').then(function(m){
+        console.log(m);
+        var thumb = new m.Thumb();
+        $.fn.extend({
+          "thumb": thumb
+        });
+
+        $(document).ready(function(){
+          $("p").text(thumb.getZanNum())
+        })
+
+        $("#zan").click(function(){
+          console.log("赞");
+          $("#zan").attr("src", "./images/select_zan.png");
+          thumb.addZan();
+          $("p").text(thumb.getZanNum()).css("color","#f00")
+        })
+
+          console.log(thumb);
+          console.log();
+          console.log(thumb.getZanNum());
+
+      //  console.log(new m.q().es6); // yay
+        // document.getElementById('demo').onclick=function(){
+        //    console.log("click");
+        // }
+
+      });
+  </script>
+
+</body>
+</html>
