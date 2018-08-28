@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body onload="onLoad()">
+   <button type="button" name="button" id="btn1">按钮</button>
+   <button type="button" name="button" id="btn2">按钮2</button>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/3.1.1/rx.all.compat.min.js" charset="utf-8"></script>
+   <script type="text/javascript">
+      function onLoad(){
+        // var button = document.querySelector('#btn1');
+        // Rx.Observable.fromEvent(button,'click')
+        //  .throttleTime(1000)
+        //  .scan(count=> count+1,0)
+        //  .subscribe(()=>console.log('Clicked ${count} times!'));
+
+          var button2 = document.querySelector('#btn2');
+          button2.addEventListener('click',(event)=>{
+            // var observable = Rx.Observable.create(function (observer) {
+            //   observer.next(1);
+            //   observer.next(2);
+            //   observer.next(3);
+            //   setTimeout(() => {
+            //     observer.next(4);
+            //     observer.complete();
+            //   }, 1000);
+            // });
+            //
+            // console.log('just before subscribe');
+            // observable.subscribe({
+            //   next: x => console.log('got value ' + x),
+            //   error: err => console.error('something wrong occurred: ' + err),
+            //   complete: () => console.log('done'),
+            // });
+            // console.log('just after subscribe');
+
+
+            // function foo() {
+            //   console.log('Hello');
+            //   return 42;
+            // }
+            // var x = foo.call();
+            // console.log(x);
+            // var y = foo.call();
+            // console.log(y);
+
+            // var foo = Rx.Observable.create(function (observer) {
+            //   console.log('Hello');
+            //   observer.next(42);
+            //   observer.next(100); // “返回”另外一个值
+            //   observer.next(200); // 还可以再“返回”值
+            // }  );
+
+            // console.log('before');
+            // foo.subscribe(functioOn (x) {
+            //   console.log(x);
+            // });
+            // foo.subscribe(function (y) {
+            //   console.log(y);
+            // });
+            // console.log('after');
+
+            var observable = Rx.Observable.create(function subscribe(observer){
+              var id = setInterval(()=>{
+                observer.next('hi')
+              },1000);
+              // 提供取消和清理 interval 资源的方法
+                 return function unsubscribe() {
+                   clearInterval(intervalID);
+                 };
+              });
+            observable.subscribe(x=>console.log(x));
+
+
+
+          })
+
+      }
+
+   </script>
+</body>
+</html>
