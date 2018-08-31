@@ -15,8 +15,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      "./es5/**/*.js",
-      "./es5/**/*.spec.js"
+      "./js/**/*.js",
+      "./js/**/*.spec.js"
     ],
 
 
@@ -28,9 +28,22 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-       'es5/**/*.js': ['coverage']
+       'js/**/*.js': ['babel'],
+       'test/**/*.js': ['babel']
     },
 
+    babelPreprocessor: {
+         options: {
+           presets: ['es2015'],
+           sourceMap: 'inline'
+         },
+         filename: function (file) {
+           return file.originalPath.replace(/\.js$/, '.es5.js');
+         },
+         sourceFileName: function (file) {
+           return file.originalPath;
+         }
+    },
 
    coverageReporter: {
      type : 'html',

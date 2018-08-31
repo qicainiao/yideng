@@ -57,6 +57,7 @@
       function myclick(){
         console.log("lllll",this.style.color);
       }
+
       function load(){
         document.getElementById('btn').onclick=myclick;//结果 red。this执行当前dom
         //如果单独调用 myclick 结果 green,this执行window
@@ -77,6 +78,223 @@
         }
       }
       yideng.method(fn,1);
+
+
+
+      function test(){
+        if (false) {
+          var a = 1;
+        }
+        console.log("inner==>",a);
+      }
+      test();
+      console.log("out==>",a);
+      //inner==> undefined
+      //Uncaught ReferenceError: a is not defined
+      //es5 函数级别作用于
+      //es6快级作用域
+
+      if (false) {
+        let a =1;
+      }
+      console.log("a==>",a);
+      //VM3991:4 Uncaught ReferenceError: a is not defined
+
+     //用es5 实现let
+     //es5有with  try catch两个块级作用域
+     try {
+       throw 5
+     } catch (a) {
+       console.log(a);
+     }
+
+      (function(){
+        console.log(a);
+        var a=1;
+        function a(){
+
+        }
+      })()
+      //a是函数体
+
+
+      var yideng ={a:1}
+      with(yideng){ ///with形成块级作用域有问题，会延迟作用域链
+        b:2
+      }
+      console.log(b); //undefined    with如果里面没有b会把b定义到全局
+
+      (function(){
+        console.log(a);
+        var a=1;
+        function a(){
+        }
+      })()
+      //a 是函数体。a的赋值保留当前词法作用域  函数提升优先级高于 变量。
+
+      (function(){
+        function a(){
+        }
+        var a=1;
+        console.log(a); //a ==1
+      })()
+
+      (function(){
+        var a=b=1;
+      })()
+
+      console.log(`b==>${b}`);  //b全局为1
+      console.log(`a==>${a}`);  //a is not defined
+
+      function test(){
+        var a=1;
+        return function(){
+
+        }
+      }
+      test(); //这个时候a是可以被回收的，a没被占用
+
+      function test(){
+        var a=1;
+        return function(){
+           eval("");//with  try catch 都不会被回收
+        }
+      }
+      test(); //这个时候a不会被回收 无法判断a是否会被暂用
+
+
+
+      this.a=20;
+      var yideng = {
+        a:30,
+        init:function(){
+          console.log(this.a);
+        }
+      }
+      yideng.init(); //30
+      var s = yideng.init;
+      s();//20 this指向window
+
+
+      this.a=20;
+      var yideng = {
+        a:30,
+        init:function(){
+          function test(){
+            console.log(this.a); //特殊情况 这里有闭包，找不到this的指向 就指向window20
+          }
+          test();
+        }
+      }
+      yideng.init(); //20 特殊情况
+
+
+      this.a=20;
+      var yideng = {
+        a:30,
+        init:()=>{
+          console.log(this.a);
+        }
+
+      }
+      yideng.init(); //20 箭头函数里面的this继承父亲级别的this yideng里面的this绑定是window
+
+      this.a=20;
+      var yideng = {
+        a:30,
+        b:this.a
+      }
+      //yideng={a: 30, b: 20}
+
+      function test(){
+        this.a=20;
+      }
+      test.prototype.a=30;
+      console.log((new test()).a);//20
+
+
+      class test {
+        a(){
+          console.log(`类内部2`);
+        }
+      }//相当于a绑定到了test原型，翻译成es5
+      // test.prototype.a = function(){
+      //    console.log(`类内部2`);
+      // }
+
+      test.prototype.a = function(){
+        console.log(`原型111`);
+      }
+      let demo = new test();
+      demo.a();
+      //或者 (new test()).a() 结果 原型111
+      //因为整个类是基于es5的原型链上实现的。
+      //后面的原型链上的a覆盖了前面的
+      //promise await也是基于原型链实现的
+
+
+
+
+
+
+
+
+      console.log("bbb==000=>"+b);
+      // b();
+      if (true) {
+        function b(){
+
+        }
+      }
+      console.log("bbb==111=>"+b);
+      //bbb==000=>undefined chroma
+      // bbb==111=>function b(){
+      //
+      //   }
+
+      //ie6
+      // bbb==000=>function b(){
+      //
+      //   }
+      // bbb==111=>function b(){
+      //
+      //   }
+
+      c();
+      if (true) {
+        function c(){
+          console.log("c");
+        }
+      }
+      //chroma Uncaught TypeError: c is not a function
+
+
+      if (true) {
+        function f(){
+          console.log("f");
+        }
+      }
+      f(); //这个时候f可以正常执行
+
+      function test(m){
+        m={
+          v:5
+        }
+      }
+      var m = {
+        k:30
+      }
+      test(m);
+      console.log(m.v);   //undefined  值传递与地址传递
+
+      function test(q){
+        q.v=5
+      }
+      var m = {
+        k:30
+      }
+      test(m);
+      console.log(m.v);   //5
 
   </script>
 </head>
