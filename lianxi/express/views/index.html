@@ -1,0 +1,64 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+<body> -->
+  <!-- <form action="http://127.0.0.1:8081/process_post" method="POST">
+    First Name: <input type="text" name="first_name">  <br>
+
+    Last Name: <input type="text" name="last_name">
+    <input type="submit" value="Submit">
+</form> -->
+  <!-- 选择一个文件上传: <br />
+<form action="/file_upload" method="post" enctype="multipart/form-data">
+<input type="file" name="image" size="50" />
+<br />
+<input type="submit" value="上传文件" />
+</form>
+</body>
+</html> -->
+
+
+{% extends 'layout.html' %}
+
+{% block title %}index {{title}} {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="css/index.css">
+{% endblock %}
+
+{% block content %}
+<p>这是我填充111333的内容</p>
+{{data}}
+
+{% set foo = [0, 1, 2, 3, 4, 5] %}
+{% for num in foo %}
+    <li>{{ num }}</li>
+{% endfor %}
+
+{% endblock %}
+
+
+{% extends 'layout0.html' %}
+
+<!-- {% block title %}index {{title}} {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="css/index.css">
+{% endblock %}
+
+{% block content0 %}
+<p>这是我000填充的内容</p>
+{{data}} -->
+
+{% set foo = [0, 1, 2, 3, 4, 5] %}
+{% for num in foo %}
+    <li>{{ num }}</li>
+{% endfor %}
+
+{% endblock %}
