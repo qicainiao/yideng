@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+      //模块化萌芽时代 立即执行函数
+      var moduleA = function(){
+        var a,b;
+        return {
+          message: function(c){
+            alert(a+b+c)
+          }
+        }
+      }()
+
+      (function(window){
+        window.jQuery = window.$ = jQuery;
+      })(window)
+
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

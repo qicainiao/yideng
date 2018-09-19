@@ -1,0 +1,1 @@
+{"version":3,"file":"bundle.js","sources":["src/main.js"],"sourcesContent":["import {version} from '../package.json';\r\nexport default function () {\r\n  console.log(\"version==>\",version);\r\n}\r\n"],"names":[],"mappings":";;;;AACe,eAAQ,IAAI;EACzB,OAAO,CAAC,GAAG,CAAC,YAAY,CAAC,OAAO,CAAC,CAAC;CACnC;;;;"}
