@@ -16,3 +16,5 @@ app.get("/index", function(req, res, next) {
 app.listen(3000, function() {
     console.log('接口已启动...');
 });
+
+//请求http://localhost:3000/index

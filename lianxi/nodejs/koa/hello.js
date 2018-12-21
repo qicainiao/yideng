@@ -26,7 +26,6 @@ app.use(async (ctx, next) => {
 });
 
 // response
-
 app.use(async ctx => {
     console.log(6);
   ctx.body = 'Hello World';
@@ -37,4 +36,4 @@ app.on('error', err => {
 });
 
 app.listen(3000);
-app.listen(3001);
+app.listen(3001); //可以同时监听两个端口

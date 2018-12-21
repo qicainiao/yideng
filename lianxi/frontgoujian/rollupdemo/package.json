@@ -1,7 +1,6 @@
 {
   "name": "rollupdemo",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,5 +10,7 @@
   "devDependencies": {
     "rollup": "^0.66.0",
     "rollup-plugin-json": "^3.1.0"
-  }
+  },
+  "dependencies": {},
+  "description": ""
 }
