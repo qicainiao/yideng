@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js" charset="utf-8"></script>
+</head>
+<body>
+   <div id="app">
+     <span v-if="ok">{{message}}</span>
+     <form v-on:submit="submitForm" >
+       <input type="submit" name="提交" value="提交">
+     </form>
+   </div>
+   <script type="text/javascript">
+      new Vue({
+        el:"#app",
+        data:{
+          message:'我是message',
+          ok:true
+        },
+        methods:{
+          submitForm:function(e){
+            alert(e);
+          }
+        }
+      })
+   </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+
+//less预处理器
+//less很好的学习中文网站http://www.bootcss.com/p/lesscss/
+
+//变量
+//变量允许我们单独定义一系列通用的样式，然后在需要的时候去调用。所以在做全局样式调整的时候我们可能只需要修改几行代码就可以了。
+@width:10px;
+@height:@width+10px;
+
+.header {
+  width: @width;
+  height: @height;
+}
+
+
+@redcolor:#ff0000;
+
+.title{
+  color: @redcolor;
+}
+
+//混合 minx
+//可以将一个定义好的class A轻松的引入到另一个class B中，从而简单实现class B继承class A中的所有属性。我们还可以带参数地调用，就像使用函数一样。
+.rounded-corners(@radius:5px){
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+.test1{
+  .rounded-corners;
+}
+
+.test2{
+  .rounded-corners(10px);
+}
+
+//嵌套规则
+//我们可以在一个选择器中嵌套另一个选择器来实现继承，这样很大程度减少了代码量，并且代码看起来更加的清晰。
+
+//css中重复写选择器是非常恼人的。如果要写一大串指向页面中同一块的样式时，往往需要 一遍又一遍地写同一个ID：
+//
+// #content article h1 { color: #333 }
+// #content article p { margin-bottom: 1.4em }
+// #content aside { background-color: #EEE }
+
+// #content {
+//   article {
+//     h1 { color: #333 }
+//     p { margin-bottom: 1.4em }
+//   }
+//   aside { background-color: #EEE }
+// }
+
+.test3{
+  h1{
+    font-size:12px;
+    font-weight: bold;
+  }
+  p{
+    font-size: 12px;
+    a{
+      text-decoration: none;
+      &:hover { border-width: 1px }
+    }
+  }
+}
+//大多数情况下这种简单的嵌套都没问题，但是有些场景下不行，比如你想要在嵌套的选择器 里边立刻应用一个类似于：hover的伪类。为了解决这种以及其他情况，sass提供了一个特殊结 构&。
+
+
+//函数与运算
+//运算提供了加减乘除操作，我们可以做属性值和颜色的运算。这样就可以实现属性值之间的复杂关系。
+//less中的函数一一映射了js代码，可以操作属性值运算
+@the-border: 1px;
+@base-color:#111;
+@red: #842210;
+
+.test4{
+  color: @base-color * 3;
+  border-left: @the-border;
+  border-right: @the-border * 2;
+}
+
+.test5{
+    color: @base-color+#004400;
+    border-color: desaturate(@red, 10%);
+}

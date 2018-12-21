@@ -1,0 +1,15 @@
+{
+  "name": "webpack1new",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --progress"
+  },
+  "dependencies": {
+    "webpack": "^4.25.1"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19"
+  }
+}

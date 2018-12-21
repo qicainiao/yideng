@@ -1,0 +1,68 @@
+
+$highlight-color: #F90;
+
+nav{
+  $width:100px;
+  width: $width;
+  color: $highlight-color;
+}
+
+#content {
+  article {
+    h1 { color: #333 }
+    p { margin-bottom: 1.4em }
+  }
+  aside { background-color: #EEE }
+}
+
+
+.container {
+  h1, h2, h3 {margin-bottom: .8em}
+}
+
+
+@mixin rounded-corners{
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.notice {
+  background-color: green;
+  border: 2px solid #00aa00;
+  @include rounded-corners;
+}
+
+
+@mixin link-colors($normal, $hover, $visited) {
+  color: $normal;
+  &:hover { color: $hover; }
+  &:visited { color: $visited; }
+}
+
+a {
+  @include link-colors(blue, red, green);
+}
+
+
+
+.message{
+  color:#333;
+  padding:10px;
+  border:1px solid #ccc;
+}
+
+.success{
+  @extend .message;
+  border-color:green;
+}
+
+.faile{
+  @extend .message;
+  border-color:red;
+}
+
+.warning{
+  @extend .message;
+  border-color:yellow;
+}
