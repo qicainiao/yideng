@@ -8,13 +8,33 @@
   <script type="text/javascript">
     function onLoad(){
       var list_li = document.getElementsByTagName("li")
-      for (var i = 0; i < list_li.length; i++) {
-        list_li[i].onclick = (function(index){
-           return function(){
-              console.log(index);
-           };
-        })(i)
-      }
+      //第一种解决方案
+      // for (var i = 0; i < list_li.length; i++) {
+      //   list_li[i].onclick = (function(index){
+      //      return function(){
+      //         console.log(index);
+      //      };
+      //   })(i)
+      // }
+
+       //第二种解决方案
+       // for (let i = 0; i < list_li.length; i++) {
+       //   list_li[i].onclick= function(){
+       //      console.log(i);
+       //   }
+       // }
+
+
+       //第三种解决方案
+       //最后我们巧妙的运用了this解决(this.innerHTML),在面试的时候经常面试官会迷惑你this的情况，
+       //要分析最后this再没执行前的作用域到底在哪。
+       // for(var j = 0; j < list_li.length; j++) {
+       //   list_li[j].onclick = function() {
+       //       console.log(this.innerHTML);
+       //   }
+       // }
+
+
     }
   </script>
 </head>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript">
+     function handleClick(){
+       setInterval(
+         throttle(() => {
+           console.log(1,this.lastTime)
+         }, 1000),
+         1
+       )
+     }
+
+     const throttle = (func, wait = 50) => {
+        // 上一次执行该函数的时间
+        let lastTime = 0
+        return function(...args) {
+          // 当前时间
+          let now = +new Date()
+          // 将当前时间和上一次执行函数时间对比
+          // 如果差值大于设置的等待时间就执行函数
+          console.log("this===>",this);
+          if (now - lastTime > wait) {
+            lastTime = now
+            func.apply(this, args)
+          }
+        }
+      }
+
+
+     // const throttle = (func, wait = 50) => {
+     //    // 上一次执行该函数的时间
+     //    let lastTime = 0
+     //      let now = +new Date()
+     //      if (now - lastTime > wait) {
+     //         console.log("aaaaaaaaaaa");
+     //        lastTime = now
+     //        return  func();
+     //      }
+     //  }
+
+
+
+
+  </script>
+</head>
+<body>
+   <button onclick="handleClick()">按钮</button>
+</body>
+</html>
