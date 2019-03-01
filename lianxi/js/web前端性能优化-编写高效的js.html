@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+   <ul>
+       <li>1</li>
+       <li>2</li>
+       <li>3</li>
+       <li>4</li>
+       <li>5</li>
+       <li>6</li>
+       <li>7</li>
+       <li>8</li>
+       <li>9</li>
+       <li>10</li>
+   </ul>
+
+
+</div>
+<script>
+//   事件委托
+//
+// 事件委托就是利用冒泡的原理，将原本应该添加在某些元素身上的监听事件，添加到其父元素身上，来达到提高性能的效果。
+
+// window.onload = function() {
+//    var ul = document.getElementsByTagName('ul')[0];
+//    var liList = document.getElementsByTagName('li');
+//
+//    for(var i = 0,len = liList.length;i < len;i++) {
+//        liList[i].onclick = function() {
+//            console.log(i);
+//            alert(this.innerHTML);
+//        }
+//    }
+// }
+// 这样我们就为每个li添加了监听事件了。
+//
+// 显然，我们通过循环为每个li添加监听事件是不优化的。这样不仅浪费了内存，在新的li加入的时候我们还要重新为它添加监听事件。
+
+window.onload = function() {
+    var ul = document.getElementsByTagName('ul')[0];
+    var liList = document.getElementsByTagName('li');
+
+    ul.onclick = function(e) {
+        console.log(e);
+        var e = e || window.event;
+        var target = e.target || e.srcElement;
+        console.log(target.nodeName);
+        if(target.nodeName.toLowerCase() == "li") {
+            alert(target.innerHTML);
+        }
+    }
+}
+
+// 这样写的好处：
+//
+// 只添加一个监听事件，节省了内存；新加入li的时候我们也不用为它单独添加监听事件；在页面中添加事件处理程序所需的时候更少，因为我们只需要为一个DOM元素添加事件处理程序。
+
+// 最后，提一点不会提高性能的建议
+//
+// if( 2 == value) {
+//
+// }
+// 类似这种判断的时候推荐常量放在左边，这样就可以预防类似 if( value = 2){} 的错误了，因为如果少写了一个等号， if( value = 2) {} 是合法的语句，而且代码量变大的时候不容易检查出来。if( 2 = value) {} 这样少写了等号JavaScript引擎会直接报错，我们就可以愉快地改过来了。（只是建议）
+//
+//
+</script>
+
+</body>
+</html>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
   <script type="text/javascript">
     function onLoad(){
       var list_li = document.getElementsByTagName("li")
@@ -17,7 +18,7 @@
       //   })(i)
       // }
 
-       //第二种解决方案
+    //   第二种解决方案
        // for (let i = 0; i < list_li.length; i++) {
        //   list_li[i].onclick= function(){
        //      console.log(i);
@@ -33,13 +34,12 @@
        //       console.log(this.innerHTML);
        //   }
        // }
-
-
     }
+
   </script>
 </head>
 <body onload="onLoad()">
-  <ul>
+  <ul >
     <li>0</li>
     <li>1</li>
     <li>2</li>
@@ -52,5 +52,54 @@
     <li>9</li>
     <li>10</li>
   </ul>
+
+  <ul id="ul">
+  	<li>1</li>
+    <li>2</li>
+  	<li>3</li>
+  	<li>4</li>
+  	<li>5</li>
+  </ul>
+
+
+  <ul id="ul2">
+    <li><span id="myspan">22222</span></li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+
+   <script type="text/javascript">
+      //事件注册在li上 如果li被移除了，但是事件不移除容易内存泄漏，引用的dom不存在了，循环引用引起内存泄漏
+      //1
+      // let ul = document.querySelector("#ul")
+      // ul.addEventListener("click",(event)=>{
+      //   console.log(event.target.innerHTML);
+      // });
+
+      //2
+      $("#ul").click(function(event){
+          console.log(event.target.innerHTML);
+      })
+//
+//       事件代理的方式相较于直接给目标注册事件来说，有以下优点：
+//
+//        节省内存
+//        不需要给子节点注销事件
+//如果新增10个li
+
+// $("#ul2").click(function(e){
+//     console.log(event.target.innerHTML);
+// })
+
+    $("#myspan").click(function(e){
+        console.log(event.target.parentNode);   //event.target获取点击的dom节点。想找到li往父级查找
+    })
+//
+   </script>
+
+
+
 </body>
 </html>
