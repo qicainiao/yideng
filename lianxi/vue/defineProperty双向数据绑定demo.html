@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  手写一个简单双向绑定<br/>
+ <input type="text" id="model" onchange="handleChange(this.value)"><br/>
+ <div id="modelText"></div>
+
+ <script>
+var user = {};
+var defaultName = "狂奔的蜗牛";
+
+document.querySelector("#model").value = defaultName;
+document.querySelector("#modelText").textContent = defaultName;
+
+//定义属性 监控改变
+Object.defineProperty(user,"name",{
+  get:function(){
+    console.log("你是不是来获取值啦");
+    return defaultName;
+  },
+  set:function(newValue){
+    console.log("设置新值");
+    defaultName = newValue;
+    console.log("实现 模型 => 视图");
+    document.querySelector("#model").value = newValue;
+    document.querySelector("#modelText").textContent = newValue;
+  }
+})
+
+function handleChange(val){  //鼠标移除input框之后才执行
+   console.log(val);
+     user.name = val;
+}
+</script>
+</body>
+</html>

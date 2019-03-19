@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript">
+    function Dep(){
+      this.subs=[];
+    }
+
+    Dep.prototype.notify= function(){
+      this.subs.forEach(function(sub){
+        sub.update();
+      })
+    }
+
+    function Sub(x){
+      this.x= x;
+    }
+
+    Sub.prototype.update= function(){
+      this.x=this.x+1;
+      console.log(this.x);
+    }
+
+    var pub = {
+      publish:function(){
+        dep.notify();
+      }
+    }
+
+    var dep= new Dep();
+    dep.subs.push(new Sub(1),new Sub(2));
+    pub.publish();
+  </script>
+</head>
+<body>
+
+</body>
+</html>

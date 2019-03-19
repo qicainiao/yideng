@@ -6,6 +6,73 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>javascript容错处理</title>
   <script type="text/javascript">
+
+
+  // 总结下这小节的内容：
+  //
+  // 函数提升优先于变量提升，（如果函数提升之后发现变量也要提示，但是变量没有值就直接忽略变量提示）函数提升会把整个函数挪到作用域顶部，变量提升只会把声明挪到作用域顶部
+  // var 存在提升，我们能在声明之前使用。let、const 因为暂时性死区的原因，不能在声明前使用
+  // var 在全局作用域下声明变量会导致变量挂载在 window 上，其他两者不会
+  // let 和 const 作用基本一致，但是后者声明的变量不能再次赋值
+  // 函数的赋值保留当前词法作用域
+
+     (function(){
+       console.log(a);
+       var a=1;
+       function a(){
+
+       }
+     })()  //函数提升优先级高于变量
+
+     test();  //可以打印aaa
+     function test(){
+        console.log("aaa");
+     }
+
+
+     //闭包
+    函数A内部有一个函数B，函数B可以引用函数A内的变量，那么函数B就是闭包。
+      function A(){
+         var a=1;
+         window.B = function(){
+           console.log(a);
+         }
+      }
+
+      A();
+      B(); // 1
+
+     很多人对于闭包的解释可能是函数嵌套了函数，然后返回一个函数。其实这个解释是不完整的，就比如我上面这个例子就可以反驳这个观点。
+
+
+     function test(){
+       var a=1;
+     }
+
+     test(); //执行完test() a会被回收
+
+     funtion test(){
+       var a=1;
+       return function(){
+
+       }
+     }
+    test(); //这时候a依然会被回收，因为闭包没用到变量a
+
+
+
+         funtion test(){
+           var a=1;
+           return function(){
+               eval("")
+           }
+         }
+        test(); //这时候a不会被回收，因为不确定eval是否会用到a
+
+
+
+
+
      // var a=;
      // alert(1); //上一句错误，后面的不会再执行
      function a(){

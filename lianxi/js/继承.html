@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   <script type="text/javascript">
+     function People(name,age){
+       this.name= name;
+       this.age= age;
+     }
+
+     People.prototype.getName= function(){
+       return this.name
+     }
+
+     function EngLish(name,age,language){
+       People.call(this,name,age); //这个时候call只是继承了父类里面的 this.name= name;和 this.age= age;但是父类的prototype并没有继承
+       this.language = language;
+     }
+
+     //如果想子类的prototype继承父类的prototype，如果
+
+    //EngLish.prototype = People.prototype;
+    //那么子类和父类指向的是一个对象。子类的prototype添加方法的的话父类的prototype也跟着变化，就失去了继承的含义
+
+    function inherits (child,parent){
+      var _prototype = Object.create(parent.prototype);
+      _prototype.constructor = child.prototype.constructor;
+      child.prototype = _prototype;
+    }
+    inherits(EngLish,People);
+    EngLish.prototype.getLanguage= function(){
+      return this.language
+    }
+
+
+     class Parent{
+       constructor(name,age){
+         this.name= name;
+         this.age= age;
+       }
+
+       getName(){
+         return this.name
+       }
+     }
+
+     class Child extends Parent{
+       constructor(name,age,language){
+         super(name,age);
+         this.language = language;
+       }
+
+       getLanguage(){
+         return this.language;
+       }
+     }
+
+     var child = new Child("lili",20,"english");
+     console.log(child.getName());
+
+   </script>
+</body>
+</html>
