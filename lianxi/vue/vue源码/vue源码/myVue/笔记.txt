@@ -1,0 +1,20 @@
+1.vue变量 MVVM->vue变量
+2.this -》 vm.data = {
+        text: 'hello world'
+}
+3.Compile 浏览器不认识的代码 编译成了最后的结果
+4.observe 订阅者模式
+5.observe遍历对象 -》 拆开
+6.defineReactive(vm, key, obj[key]); 
+7.obj.text = "helloWorld";
+ obj.data = {text:"helloWorld"}
+8.vue实例上 响应式变量
+9.观察者模式 一定是有人动了vue实例
+10.dep.addSub(Dep.target); Dep.target=watcher
+11.watcher -> v-text
+12.Compile -> 容器的dom ， vm ->text 响应式 -》 订阅发布者的能力
+13.当我们遍历dom节点的时候 {{ 值 }} 创建wantcher
+14.text -> vm -> 订阅者
+15.new Watcher(vm, node, name, 'nodeValue');
+16.watcher 身上有个方法 叫update  文本节点
+17.订阅者也是发布者 

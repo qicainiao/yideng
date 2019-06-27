@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+    <script type="text/javascript">
+       var dataList = [
+           {
+               name:'111',
+               age:1
+           },{
+               name:'222',
+               age:2
+           },{
+               name:'333',
+               age:3
+           },{
+               name:'444',
+               age:4
+           },
+       ]
+       $(document).ready(function () {
+        function render(data){
+           var $container = $('#container')
+           $container.html('')
+           //拼接tabel
+           $table = $('<table>')
+           $table.append($('<tr><td>name</td><td>age</td></tr>'))
+           //渲染到页面
+           data.forEach(item => {
+            $table.append($(`<tr><td>${item.name}</td><td>${item.age}</td></tr>`))
+           });
+           $container.append($table)
+       }  
+        render(dataList)
+        $("#btn-change").click(function(){
+           dataList[1].age=30  //每次修改数据都会清空dom，然后重绘表格
+           render(dataList)
+        })
+       })
+    
+    </script>
+
+<!-- 上述办法遇到的问题
+- js原生或者是Jquery框架时代，都是直接操作DOM节点来进行渲染页面，可是这样的代价确实是很大，需要将原本的DOM全部清除，然后在重新渲染一遍
+- 操作Dom非常昂贵。每个Dom自带了太多的属性。 js运行效率高
+- 尽量减少Dom操作
+- 项目越复杂，运行效率越低，影响越严重
+- vdom 可以解决这个问题，将Dom操作方在Js层，提高效率 -->
+
+</head>
+<body>
+    <div id="container"></div>
+    <button id="btn-change">修改数据</button>
+</body>
+</html>

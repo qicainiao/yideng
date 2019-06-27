@@ -1,0 +1,22 @@
+{
+  "name": "jenkinsdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "config":{
+    "port":3030
+  },
+  "scripts": {
+    "var":"echo $npm_package_config_port",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretest": "echo pretest",
+    "dev:client": "scripty",
+    "foo:bar": "scripty",
+    "dev:server": "scripty"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "scripty": "^1.9.1"
+  }
+}

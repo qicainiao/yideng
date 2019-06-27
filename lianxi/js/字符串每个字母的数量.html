@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //字符串中的每个字每出现了多少次
+       function getNum(testString){
+         const testNum={}
+         for(let i=0;i<testString.length;i++){
+             if(testNum[testString[i]]){
+                testNum[testString[i]]++
+             }else{
+                testNum[testString[i]]=1
+             }
+         }
+
+         for(let key in testNum){
+             console.log(key +"这个字母出现的次数"+testNum[key])
+         }
+         return testNum
+       }
+        getNum("aavvdlskdjld")
+
+        //冒泡排序
+        function sortArr(array){
+          for(let i=0;i<array.length-1;i++){
+              for(let j=i+1;j<array.length;j++){
+                  let temp;
+                  if(array[i]>array[j]){
+                      temp = array[i]
+                      array[i]= array[j]
+                      array[j] = temp
+                  }
+              }
+          }
+          return array
+        }
+        sortArr([9,4,1,8,7,35,45])
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

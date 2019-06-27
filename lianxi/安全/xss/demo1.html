@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+    <script>
+        function upperCase(x)
+        {
+        var y=document.getElementById(x).value
+        console.log(y)
+        document.getElementById("p").innerText=y
+        }
+    </script>
+</head>
+<body>
+  <!-- <textarea name="txt" id="txt" cols="80" rows="10" value="<img src='null' onerror='alert(document.cookie)' />" />
+  <button type="button" id="test">测试</button> -->
+
+ 
+    <input type="text" id="fname" onchange="upperCase(this.id)"> 
+     <p id="p"></p>
+     <a href=javascrip:alert('xss')>s</a>
+
+  </form> 
+</body>
+</html>

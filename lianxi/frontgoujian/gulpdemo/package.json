@@ -11,5 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^5.0.1",
+    "minify": "^4.1.1"
   }
 }
