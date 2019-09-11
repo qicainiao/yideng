@@ -6,6 +6,40 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <script type="text/javascript">
+     //容易弄混乱的题目  es5this是谁掉指谁  es6 this指向包裹箭头函数的第一个普通函数
+
+      function foo(){
+        console.log(this.a)
+      }
+      var a=1;
+      foo()  //1
+
+      const obj={
+        a:42,
+        foo:foo
+      }
+
+      obj.foo()  //42
+      var s = obj.foo;
+      s();
+      
+
+      var module = {
+          x: 42,
+          getX: function() {
+            return this.x;
+          }
+       }
+
+        var unboundGetX = module.getX;
+        console.log(unboundGetX()); // The function gets invoked at the global scope
+        // expected output: undefined
+
+        var boundGetX = unboundGetX.bind(module);
+        console.log(boundGetX());
+        // expected output: 42
+
+
       //es5 谁掉指向
       function test(){
         console.log("000000=>",this.m)  //undefined 而不是not defined 这里是window掉。相当于window.m

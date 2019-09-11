@@ -1,3 +1,8 @@
+//let 实现
+
+(function(){var a = 1;console.log(a)})();console.log(a)
+
+
 //es6 class 创建对象用es5实现
 //1最简单的对象字面量和Object构造函数
   var person = new Object();

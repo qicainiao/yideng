@@ -10,7 +10,7 @@
    <script type="text/javascript">
 
 
-     //一 类式继承
+     //一 类式继承  借用构造函数继承
 
      var father = function() {
         this.age = 52;
@@ -21,14 +21,43 @@
       
       var child = function() {
         this.name = 'bill';
-        father.call(this);
+        father.call(this);  //这种方式只是实现部分的继承，如果父类的原型还有方法和属性，子类是拿不到这些方法和属性的。
       }
       
       var man = new child();
       man.say();
 
+     // 二原型链继承
 
-     //二 原型继承
+     function Person(name, age) {
+           this.name = name,
+           this.age = age,
+           this.play = [1, 2, 3]
+           this.setName = function () { }
+       }
+       Person.prototype.setAge = function () { }
+       //子类型
+       function Student(price) {
+           this.price = price
+           this.setScore = function () { }
+       }
+       Student.prototype = new Person() // 子类型的原型为父类型的一个实例对象
+       var s1 = new Student(15000)
+       var s2 = new Student(14000)
+       console.log(s1,s2)
+
+//        特点：
+
+// 父类新增原型方法/原型属性，子类都能访问到
+// 简单，易于实现
+// 缺点：
+
+// 无法实现多继承
+// 来自原型对象的所有属性被所有实例共享
+// 创建子类实例时，无法向父类构造函数传参
+// 要想为子类新增属性和方法，必须要在Student.prototype = new Person() 之后执行，不能放到构造器中
+
+     //二 原型链+借用构造函数的组合继承
      function People(name,age){
        this.name= name;
        this.age= age;
@@ -53,6 +82,7 @@
       _prototype.constructor = child.prototype.constructor;
       child.prototype = _prototype;
     }
+
     inherits(EngLish,People);
     EngLish.prototype.getLanguage= function(){
       return this.language
@@ -92,6 +122,65 @@
      var child = new Child("lili",20,"english");
      console.log(child.getName());
 
+
+
+     六种继承方式
+
+function A(name){
+            this.name=name
+        }
+        function B(age){
+            this.age=age
+        }
+        //原型链继承
+        A.prototype = new B();
+        //构造函数继承
+        function B(age){
+            a.apply(this,name);
+            this.age=age;
+        }
+        //组合式继承
+        function B(age){
+            a.apply(this,name);
+        }
+        B.prototype = new A();
+        //原型式继承
+        function B(obj){
+            let Func = function(){};
+            Func.prototype=obj;
+            return new Func()
+        }
+        let obj = new A();
+        let child = B(obj);
+        //寄生式继承
+        function B(obj){
+            let Func = function(){};
+            Func.prototype=obj;
+            return new Func()
+        }
+        let obj = new A();
+        function Child(obj){
+            let res = B(obj);
+            res.hobby='吃';
+            return res;
+        }
+        //寄生组合式继承
+        function B(age){
+            A.apply(this,name);
+            this.age=age;
+        }
+        
+        let Apro = Object.create(A.prototype);
+        Apro.constructor=B;
+        B.prototype=Apro;
+
+//https://blog.csdn.net/adrain_l/article/details/93140913
+
+var stuString="'stu':{'name' :'aa'}" 
+function myParse(str){
+  return (new Function('return'+str))()
+}
+myParse(stuString)
    </script>
 </body>
 </html>

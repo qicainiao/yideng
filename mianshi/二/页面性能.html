@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    1 异步加载JS脚本的方式有哪些
+       defer async  动态加载脚本  XHR异步加载js
+
+       动态加载脚本的方法：
+          let script = document.createElement('script');
+          script.src ="...js";
+          document.body.append(script)
+
+        XHR异步加载js 
+          let xhr = new XMLHttpRequest();
+          xhr.open('get','js/...js',true)  
+          xhr.send();
+          xhr.onreadystatechange = function(){
+               if(xhr.readyState ==4 && xhr.status == 200){
+                   eval(xhr.responseText)
+               }
+          }
+
+       减少http请求，webpack打包的是把小图片打包成base64，可以减少http请求   
+       url-loader 与 file-loader 功能一样。
+       url-loader可以配置option，小于配置的kb的时候就会打包成base64 否则打包成文件到dist目录
+          
+       webpack加载loader是有顺序的，是从下到上，从右到左的执行顺序.
+       例子：
+         module:{
+             rules:[{
+                 test:/.\scss$/,
+                 use:[
+                   'style-loader',
+                   'css-loader',
+                   'sass-loader',
+                 ]
+             }]
+         }
+
+         所以当我们使用sass的时候，配置的sass-loader 先将sass转化为css，给到css-loader，处理好之后给
+         到 style-loader 挂载到head页面上
+
+</body>
+</html>
