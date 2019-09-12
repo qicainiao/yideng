@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import TodoList from './components/todolist'
+// import AnimationDemo from './components/animationdemo'
 import './App.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         </a>
       </header> */}
       <TodoList />
+      {/* <AnimationDemo /> */}
     </div>
   );
 }
