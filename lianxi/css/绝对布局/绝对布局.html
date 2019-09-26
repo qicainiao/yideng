@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  https://www.jianshu.com/p/a3da5e27d22b
+  <!-- position 的值的定位区别：
+1.absolute 生成绝对定位的元素，相对于第一个已经定位的父元素进行定位。
+
+2.fixed 生成固定定位的元素，相对于浏览器窗口进行定位（老IE不支持）。
+
+3.relative 生成相对定位的元素，相对于自己在普通流中的位置进行定位。
+
+4.static 默认值。
+
+5.inherit 规定从父元素继承 position 属性的值。 -->
+
+<!-- 一旦给元素加上absolute或float就相当于给元素加上了display:block;。
+什么意思呢？
+比如内联元素span默认宽度是自适应的，你给其加上width是不起作用的。
+要想width定宽，你需要将span设成display:block。
+但如果你给span加上absolute或float，那span的display属性自动就变成block，
+就可以指定width了。因此如果看到CSS里absolute/float和display:block同时出现，
+那display:block就是多余的CSS代码。 -->
+
+
+  <div style="margin-left:100px;position:absolute;width:100px;height:100px;background:#990000">
+    <div style="left:10px;position:absolute;width:100px;height:100px;background:#990099;margin-top:10px"></div>
+  </div>
+   <span style="float:right;height:100px;background:#660066;">www</span>
+
+
+      <div style="top: 400px;margin-left:100px;position:absolute;width:100px;height:100px;background:#990000">
+             <div style="width:100px;height:100px;background:#999999;margin-top:10px"></div>
+        <div style="left: 100px;position:absolute;width:100px;height:100px;background:#990099;margin-top:10px"></div>
+        <div style="width:100px;height:100px;background:#000099;margin-top:10px"></div>
+      </div>
+</body>
+</html>

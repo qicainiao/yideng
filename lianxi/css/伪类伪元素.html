@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .test:before {
+            content: "《";
+            color:red
+        }
+        .test:after {
+            content: "》";
+            color:red
+        }
+
+        .test1:before{
+          content: '*****';
+          display: block;
+        }
+        .test1:after{
+          content: '*****';
+          display: block;
+        }
+
+            input:valid {
+                border-color: green;
+                box-shadow: inset 5px 0 0 green;
+            }
+            input:invalid {
+                border-color: red;
+                box-shadow: inset 5px 0 0 red;
+            }
+            input:required {
+                border-color: red;
+                box-shadow: inset 5px 0 0 red;
+            }
+
+            p:nth-child(2){
+              background: red;
+            }
+
+            p:nth-of-type(2){
+              background: green;
+            }
+            /* :nth-of-type(n) 除了关注n之外，还需要关注最前面的类型，也就是标签。
+            :nth-child(n) 它关注的是：其父元素下的第n个孩子，与类型无关。 */
+    </style>
+</head>
+<body>
+  <!-- 从概念上来区分，大致有以下几点：
+
+  伪类，更多的定义的是状态。常见的伪类有 :hover，:active，:focus，:visited，:link，:not，:first-child，:last-child等等。
+
+  伪元素，不存在于DOM树中的虚拟元素，它们可以像正常的html元素一样定义css，但无法使用JavaScript获取。常见伪元素有 ::before，::after，::first-letter，::first-line等等。
+
+  CSS3明确规定了，伪类用一个冒号(:)来表示，而伪元素则用两个冒号(::)来表示。但目前因为兼容性的问题，它们的写法可以是一致的，都用一个冒号(:)就可以了，所以非常容易混淆。 -->
+      <h1>这是标题</h1>
+      <p>第一个段落。</p>
+      <p>第二个段落。</p>
+      <p>第三个段落。</p>
+      <p>第四个段落。</p>
+      <p>第五个段落。</p>
+
+  https://blog.csdn.net/wangzongyang1025_/article/details/90448606
+https://segmentfault.com/a/1190000017784553#articleHeader0
+    <div class="test">乔布斯自传</div>
+
+    <div class="test1">乔布斯自传</div>
+
+
+    <p>input中类型为email的校验</p>
+
+    <p>符合email校验规则</p>
+    <input type="email" required placeholder="请输入" value="24238477@qq.com" />
+    <br><br>
+
+    <p>不符合email校验规则</p>
+    <input type="email" required placeholder="请输入" value="lalala" />
+    <br><br>
+
+    <p>有required标识，但未填写</p>
+    <input type="email" required placeholder="请输入" value="" />
+
+</body>
+</html>

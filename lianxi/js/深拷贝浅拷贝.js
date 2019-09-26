@@ -1,3 +1,4 @@
+
 //浅拷贝就是只复制了一层  深拷贝就是把一个对象中的属性,依次的,一个一个的复制到另一个对象中
 
 //对象类型和原始类型不同的是，原始类型存储的是值，对象类型存储的是地址（指针）。
@@ -108,20 +109,20 @@ function deepClone(obj) {
     function isObject(o) {
       return (typeof o === 'object' || typeof o === 'function') && o !== null
     }
-  
+
     if (!isObject(obj)) {
       throw new Error('非对象')
     }
-  
+
     let isArray = Array.isArray(obj)
     let newObj = isArray ? [...obj] : { ...obj }
     Reflect.ownKeys(newObj).forEach(key => {
       newObj[key] = isObject(obj[key]) ? deepClone(obj[key]) : obj[key]
     })
-  
+
     return newObj
   }
-  
+
   let obj = {
     a: [1, 2, 3],
     b: {

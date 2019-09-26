@@ -18,12 +18,12 @@
           alert('hello i am '+ this.name + ' and i am '+this.age + 'years old');
         }
       }
-      
+
       var child = function() {
         this.name = 'bill';
         father.call(this);  //这种方式只是实现部分的继承，如果父类的原型还有方法和属性，子类是拿不到这些方法和属性的。
       }
-      
+
       var man = new child();
       man.say();
 
@@ -46,16 +46,10 @@
        var s2 = new Student(14000)
        console.log(s1,s2)
 
-//        特点：
+//这种继承方式优点在于构造函数可以传参，不会与父类引用属性共享，
+// 可以复用父类的函数，但是也存在一个缺点就是在继承父类函数的时候调用了父类构造函数，
+// 导致子类的原型上多了不需要的父类属性，存在内存上的浪费。
 
-// 父类新增原型方法/原型属性，子类都能访问到
-// 简单，易于实现
-// 缺点：
-
-// 无法实现多继承
-// 来自原型对象的所有属性被所有实例共享
-// 创建子类实例时，无法向父类构造函数传参
-// 要想为子类新增属性和方法，必须要在Student.prototype = new Person() 之后执行，不能放到构造器中
 
      //二 原型链+借用构造函数的组合继承
      function People(name,age){
@@ -169,14 +163,14 @@ function A(name){
             A.apply(this,name);
             this.age=age;
         }
-        
+
         let Apro = Object.create(A.prototype);
         Apro.constructor=B;
         B.prototype=Apro;
 
 //https://blog.csdn.net/adrain_l/article/details/93140913
 
-var stuString="'stu':{'name' :'aa'}" 
+var stuString="'stu':{'name' :'aa'}"
 function myParse(str){
   return (new Function('return'+str))()
 }
